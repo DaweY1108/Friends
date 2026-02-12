@@ -11,7 +11,7 @@ import me.dawey.friends.configuration.configs.PluginConfig;
 
 public class ConfigManager {
    private static PluginConfig pluginConfig;
-   private static Map<String, MessageConfig> messageConfigMap = new HashMap<>();
+   private static final Map<String, MessageConfig> messageConfigMap = new HashMap<>();
    private static File pluginFolder;
 
    public ConfigManager(File folder) {
@@ -19,9 +19,6 @@ public class ConfigManager {
       pluginConfig = new PluginConfig(folder);
       
       File messagesFolder = new File(folder, "messages");
-      if (!messagesFolder.exists()) {
-         messagesFolder.mkdirs();
-      }
       new MessageConfig(messagesFolder, "en_EN.yml");
       new MessageConfig(messagesFolder, "hu_HU.yml");
 

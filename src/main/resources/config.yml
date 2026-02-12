@@ -1,0 +1,38 @@
+##################################################################
+#                       Friends config file                      #
+#                            By.: DaweY                          #
+##################################################################
+
+# - Database - #
+
+MYSQL:
+  enabled: false
+  hostname: "example.com"
+  database: "example_db"
+  username: "example_user"
+  password: "example_password"
+  port: 3306
+  useSSL: false
+
+# - Language - #
+
+#Enable automatic server locale detection
+auto-locale-detect: false
+#Custom locale, only works, when auto locale detect is false. Supported locales: hu_HU, en_EN.
+locale: "hu_HU"
+
+# - Friend add - #
+
+request-cooldown: 60
+
+# - Friend message - #
+
+enable-colored-messages: true
+
+# - Server name aliases - #
+
+server-aliases:
+  lobby: "Lobby"
+  op_skyblock: "OP SkyBlock"
+  mmo_skyblock: "MMO SkyBlock"
+  shipbattle: "HajóCsata"

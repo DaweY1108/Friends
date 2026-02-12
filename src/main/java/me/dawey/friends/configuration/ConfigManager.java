@@ -22,8 +22,8 @@ public class ConfigManager {
       if (!messagesFolder.exists()) {
          messagesFolder.mkdirs();
       }
-      new MessageConfig(messagesFolder, "messages_en.yml");
-      new MessageConfig(messagesFolder, "messages_hu.yml");
+      new MessageConfig(messagesFolder, "en_EN.yml");
+      new MessageConfig(messagesFolder, "hu_HU.yml");
 
       loadMessages(messagesFolder);
    }
@@ -35,22 +35,15 @@ public class ConfigManager {
       if (files != null) {
          for (File file : files) {
             String name = file.getName();
-            if (name.startsWith("messages_") && name.endsWith(".yml")) {
+            if (name.endsWith(".yml")) {
                String localeName;
-               if (name.equals("messages_en.yml")) {
-                  localeName = "en_EN";
-               } else if (name.equals("messages_hu.yml")) {
-                  localeName = "hu_HU";
-               } else {
-                  localeName = name.substring(9, name.length() - 4); 
-               }
-               
+               localeName = name.split("\\.")[0];
                messageConfigMap.put(localeName, new MessageConfig(messagesFolder, name));
             }
          }
       }
       if (messageConfigMap.isEmpty()) {
-           messageConfigMap.put("en_EN", new MessageConfig(messagesFolder, "messages_en.yml"));
+           messageConfigMap.put("en_EN", new MessageConfig(messagesFolder, "en_EN.yml"));
       }
    }
 

@@ -25,7 +25,7 @@ public class SQL {
 
    private ConnectionSource connectionSource;
    private Dao<Friendship, Integer> friendshipDao;
-   private Dao<FriendPlayer, String> friendPlayerDao;
+   private Dao<FriendPlayer, Integer> friendPlayerDao;
 
    public SQL() {
       Logger.setGlobalLogLevel(Level.ERROR);
@@ -85,7 +85,7 @@ public class SQL {
        return friendshipDao;
    }
 
-   public Dao<FriendPlayer, String> getFriendPlayerDao() {
+   public Dao<FriendPlayer, Integer> getFriendPlayerDao() {
        return friendPlayerDao;
    }
    

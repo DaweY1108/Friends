@@ -6,21 +6,40 @@ import com.j256.ormlite.table.DatabaseTable;
 @DatabaseTable(tableName = "friends_playerdata")
 public class FriendPlayer {
 
-    @DatabaseField(columnName = "PlayerName", id = true, canBeNull = false)
+    @DatabaseField(generatedId = true)
+    private int id;
+
+    @DatabaseField(columnName = "player_uuid", canBeNull = false, unique = true)
+    private String playerUuid;
+
+    @DatabaseField(columnName = "player_name", canBeNull = false)
     private String playerName;
 
-    @DatabaseField(columnName = "LastOnline")
+    @DatabaseField(columnName = "last_online")
     private long lastOnline;
 
-    @DatabaseField(columnName = "RequestEnabled")
+    @DatabaseField(columnName = "requests_enabled")
     private boolean requestEnabled;
 
     public FriendPlayer() {}
 
-    public FriendPlayer(String playerName, long lastOnline, boolean requestEnabled) {
+    public FriendPlayer(String playerUuid, String playerName, long lastOnline, boolean requestEnabled) {
+        this.playerUuid = playerUuid;
         this.playerName = playerName;
         this.lastOnline = lastOnline;
         this.requestEnabled = requestEnabled;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getPlayerUuid() {
+        return playerUuid;
+    }
+
+    public void setPlayerUuid(String playerUuid) {
+        this.playerUuid = playerUuid;
     }
 
     public String getPlayerName() {

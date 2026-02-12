@@ -25,7 +25,7 @@ public class PlayerConnection {
    @Subscribe
    public void onPostLogin(PostLoginEvent e) {
       Player p = e.getPlayer();
-      PlayerDatabase.createTable(p.getUsername());
+      PlayerDatabase.createPlayer(p.getUsername(), p.getUniqueId().toString());
       PlayerDatabase.setLastOnline(p.getUsername());
 
       for (String s : FriendDatabase.getFriends(p.getUsername())) {
@@ -49,7 +49,7 @@ public class PlayerConnection {
    public void onDisconnect(DisconnectEvent e) {
       Player p = e.getPlayer();
       PlayerDatabase.setLastOnline(p.getUsername());
-      PlayerDatabase.createTable(p.getUsername());
+      PlayerDatabase.createPlayer(p.getUsername(), p.getUniqueId().toString());
 
       for (String s : FriendDatabase.getFriends(p.getUsername())) {
          for (Player online : this.proxy.getAllPlayers()) {

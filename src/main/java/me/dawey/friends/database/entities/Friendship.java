@@ -9,20 +9,20 @@ public class Friendship {
     @DatabaseField(generatedId = true)
     private int id;
 
-    @DatabaseField(columnName = "PlayerName", canBeNull = false)
-    private String playerName;
+    @DatabaseField(columnName = "player_id", canBeNull = false)
+    private int playerId;
 
-    @DatabaseField(columnName = "FriendName", canBeNull = false)
-    private String friendName;
+    @DatabaseField(columnName = "friend_id", canBeNull = false)
+    private int friendId;
 
-    @DatabaseField(columnName = "FriendsSince")
+    @DatabaseField(columnName = "friends_since")
     private long friendsSince;
 
     public Friendship() {}
 
-    public Friendship(String playerName, String friendName, long friendsSince) {
-        this.playerName = playerName;
-        this.friendName = friendName;
+    public Friendship(int playerId, int friendId, long friendsSince) {
+        this.playerId = playerId;
+        this.friendId = friendId;
         this.friendsSince = friendsSince;
     }
 
@@ -30,20 +30,20 @@ public class Friendship {
         return id;
     }
 
-    public String getPlayerName() {
-        return playerName;
+    public int getPlayerId() {
+        return playerId;
     }
 
-    public void setPlayerName(String playerName) {
-        this.playerName = playerName;
+    public void setPlayerId(int playerId) {
+        this.playerId = playerId;
     }
 
-    public String getFriendName() {
-        return friendName;
+    public int getFriendId() {
+        return friendId;
     }
 
-    public void setFriendName(String friendName) {
-        this.friendName = friendName;
+    public void setFriendId(int friendId) {
+        this.friendId = friendId;
     }
 
     public long getFriendsSince() {

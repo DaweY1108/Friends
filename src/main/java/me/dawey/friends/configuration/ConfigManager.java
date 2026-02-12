@@ -19,8 +19,10 @@ public class ConfigManager {
       pluginConfig = new PluginConfig(folder);
       
       File messagesFolder = new File(folder, "messages");
-      new MessageConfig(messagesFolder, "en_EN.yml");
-      new MessageConfig(messagesFolder, "hu_HU.yml");
+      if (!messagesFolder.exists()) {
+          new MessageConfig(messagesFolder, "en_EN.yml");
+          new MessageConfig(messagesFolder, "hu_HU.yml");
+      }
 
       loadMessages(messagesFolder);
    }

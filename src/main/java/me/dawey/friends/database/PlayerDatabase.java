@@ -81,20 +81,15 @@ public class PlayerDatabase {
    public static void createPlayer(String pName, String uuid) {
       try {
          Dao<FriendPlayer, Integer> dao = Friends.database.getFriendPlayerDao();
-         FriendPlayer fp = getPlayer(pName);
          
-         if (fp == null) {
-             // Check via UUID too maybe?
-             QueryBuilder<FriendPlayer, Integer> qb = dao.queryBuilder();
-             qb.where().eq("player_uuid", uuid);
-             fp = dao.queryForFirst(qb.prepare());
-         }
+         QueryBuilder<FriendPlayer, Integer> qb = dao.queryBuilder();
+         qb.where().eq("player_uuid", uuid);
+         FriendPlayer fp = dao.queryForFirst(qb.prepare());
 
          if (fp == null) {
              fp = new FriendPlayer(uuid, pName, System.currentTimeMillis(), true);
              dao.create(fp);
          } else {
-             // Update name if changed
              if (!fp.getPlayerName().equals(pName)) {
                  fp.setPlayerName(pName);
                  dao.update(fp);

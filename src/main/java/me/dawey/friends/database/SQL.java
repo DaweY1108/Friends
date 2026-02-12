@@ -60,12 +60,8 @@ public class SQL {
           friendPlayerDao = DaoManager.createDao(connectionSource, FriendPlayer.class);
           
           // Create tables if they don't exist
-          if (!friendshipDao.isTableExists()) {
-              TableUtils.createTableIfNotExists(connectionSource, Friendship.class);
-          }
-          if (!friendPlayerDao.isTableExists()) {
-              TableUtils.createTableIfNotExists(connectionSource, FriendPlayer.class);
-          }
+          TableUtils.createTableIfNotExists(connectionSource, Friendship.class);
+          TableUtils.createTableIfNotExists(connectionSource, FriendPlayer.class);
 
       } catch (SQLException e) {
           if (ConfigManager.getpluginConfig().MYSQLenabled()) {

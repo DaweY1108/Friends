@@ -206,7 +206,7 @@ public class FriendsCommand implements SimpleCommand {
       Player p = (Player)invocation.source();
       String[] args = (String[])invocation.arguments();
       if (p.hasPermission("friends.player")) {
-         if (args.length == 1) {
+         if (args.length == 0 || args.length == 1) {
             List<String> commands = new ArrayList<>();
 
             for (String s : this.messages.getStringList("command-request")) {
@@ -323,7 +323,7 @@ public class FriendsCommand implements SimpleCommand {
          }
       }
 
-      return suggest(invocation);
+      return Collections.emptyList();
    }
 
    public void sendHelp(Player p) {
